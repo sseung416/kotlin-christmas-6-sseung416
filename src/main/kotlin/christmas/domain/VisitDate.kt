@@ -1,8 +1,12 @@
 package christmas.domain
 
+import java.time.DayOfWeek
 import java.time.LocalDate
 
-class VisitDate(private val date: LocalDate) {
+class VisitDate(date: LocalDate) {
+
+    private val dayOfWeekType = DayOfWeekType.from(dayOfWeek = date.dayOfWeek)
+    val isWeekday = dayOfWeekType == DayOfWeekType.Weekday
 
     companion object {
         private const val START_DATE = 1
@@ -22,6 +26,15 @@ class VisitDate(private val date: LocalDate) {
         private fun validateInvalid(input: String) {
             require(input.length <= 2 && input.toInt() in START_DATE..END_DATE) { Error.InvalidDate.message }
         }
+    }
+}
+
+enum class DayOfWeekType {
+    Weekend, Weekday;
+
+    companion object {
+        fun from(dayOfWeek: DayOfWeek): DayOfWeekType =
+            if (dayOfWeek in DayOfWeek.FRIDAY..DayOfWeek.SATURDAY) Weekend else Weekday
     }
 }
 
