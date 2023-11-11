@@ -22,3 +22,8 @@ class WeekendDiscount(visitDate: VisitDate, menu: Menu) : Discount {
 
     override val amount: Int = if (visitDate.isWeekend) DiscountAmount.Weekend.price * menu.mainDishOrderCount else 0
 }
+
+class SpecialDiscount(visitDate: VisitDate) : Discount {
+
+    override val amount: Int = if (visitDate.isSpecial) DiscountAmount.Special.price else 0
+}

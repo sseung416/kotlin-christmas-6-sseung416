@@ -2,6 +2,8 @@ package christmas.domain
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 
 class DiscountTest {
 
@@ -31,6 +33,13 @@ class DiscountTest {
         val menu = Menu(menuInput = "${Dessert.IceCream.menuName}-10")
         val discount = WeekendDiscount(visitDate = VisitDate.from("1"), menu = menu)
         assertThat(discount.amount).isEqualTo(0)
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["3", "10", "17", "24", "25", "31"])
+    fun `별이 있는 날에 방문하면 1000원을 할인해준다`(input: String) {
+        val discount = SpecialDiscount(visitDate = VisitDate.from(input))
+        assertThat(discount.amount).isEqualTo(1000)
     }
 
     companion object {

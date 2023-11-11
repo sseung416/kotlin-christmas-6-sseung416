@@ -9,6 +9,7 @@ class VisitDate(date: LocalDate) {
 
     val isWeekday = dayOfWeekType == DayOfWeekType.Weekday
     val isWeekend = dayOfWeekType == DayOfWeekType.Weekend
+    val isSpecial = date.dayOfMonth in listOf(3, 10, 17, 24, 25, 31)
 
     companion object {
         private const val START_DATE = 1
