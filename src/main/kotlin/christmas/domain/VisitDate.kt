@@ -6,7 +6,9 @@ import java.time.LocalDate
 class VisitDate(date: LocalDate) {
 
     private val dayOfWeekType = DayOfWeekType.from(dayOfWeek = date.dayOfWeek)
+
     val isWeekday = dayOfWeekType == DayOfWeekType.Weekday
+    val isWeekend = dayOfWeekType == DayOfWeekType.Weekend
 
     companion object {
         private const val START_DATE = 1

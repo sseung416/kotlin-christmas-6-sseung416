@@ -5,6 +5,7 @@ class Menu(menuInput: String) {
     private val countByMenuItem: Map<MenuItem, Int>
 
     val dessertOrderCount get() = countByMenuItem.filterKeys { it in Dessert.entries }.values.sum()
+    val mainDishOrderCount get() = countByMenuItem.filterKeys { it in MainDish.entries }.values.sum()
 
     init {
         val pairs = menuInput.split(DELIMITER).map { menuNameAndCountinput ->

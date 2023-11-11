@@ -19,6 +19,20 @@ class DiscountTest {
         assertThat(discount.amount).isEqualTo(0)
     }
 
+    @Test
+    fun `주말(금~토)에 메인 메뉴를 3개 주문했을 때, 6,069원을 할인해준다`() {
+        val menu = Menu(menuInput = "${MainDish.BarbecueRibs.menuName}-2,${MainDish.ChristmasPasta.menuName}-1")
+        val discount = WeekendDiscount(visitDate = VisitDate.from("1"), menu = menu)
+        assertThat(discount.amount).isEqualTo(DISCOUNT_AMOUNT * 3)
+    }
+
+    @Test
+    fun `주말(금~토)에 메인 메뉴를 포함하지 않은 메뉴를 주문했을 때, 할인 금액은 없다`() {
+        val menu = Menu(menuInput = "${Dessert.IceCream.menuName}-10")
+        val discount = WeekendDiscount(visitDate = VisitDate.from("1"), menu = menu)
+        assertThat(discount.amount).isEqualTo(0)
+    }
+
     companion object {
         private const val DISCOUNT_AMOUNT = 2023
     }
