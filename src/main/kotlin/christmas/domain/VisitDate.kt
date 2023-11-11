@@ -15,7 +15,7 @@ class VisitDate(date: LocalDate) {
         fun from(input: String): VisitDate {
             validateNumber(input)
             validateInvalid(input)
-            val date = LocalDate.ofYearDay(12, input.toInt())
+            val date = LocalDate.of(2023, 12, input.toInt())
             return VisitDate(date)
         }
 
