@@ -6,9 +6,9 @@ enum class EventBadge(val value: String, val range: Iterable<Int>) {
     Santa("산타", 20000..Int.MAX_VALUE);
 
     companion object {
+        private const val ERROR_MESSAGE = "매칭되는게 없는데염"
 
-        // todo: null return 리팩토링하기, sortedDescending 리팩
-        fun from(money: Int): EventBadge? =
-            EventBadge.entries.sortedDescending().find { money in it.range }
+        fun from(money: Int): EventBadge =
+            EventBadge.entries.findLast { money in it.range } ?: throw IllegalArgumentException(ERROR_MESSAGE)
     }
 }
