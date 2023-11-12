@@ -11,7 +11,7 @@ class GiveawayMenuTest {
     fun `12만 원 이상 주문했을 때, 샴페인을 증정한다`() {
         val money = 120_000
         val giveawayMenu = GiveawayMenu.from(money)
-        assertThat(giveawayMenu?.menuItem).isEqualTo(Drink.Champagne)
+        assertThat(giveawayMenu.menuName).isEqualTo(Drink.Champagne.menuName)
     }
 
     @ParameterizedTest
