@@ -27,3 +27,12 @@ class SpecialDiscount(visitDate: VisitDate) : Discount {
 
     override val amount: Int = if (visitDate.isSpecial) DiscountAmount.Special.price else 0
 }
+
+class ChristmasDiscount(visitDate: VisitDate) : Discount {
+
+    override val amount: Int = if (visitDate.fromChristmasCount >= 0) {
+        DiscountAmount.ChristmasDefault.price + DiscountAmount.ChristmasAddition.price * (24 - visitDate.fromChristmasCount.toInt())
+    } else {
+        0
+    }
+}

@@ -2,6 +2,7 @@ package christmas.domain
 
 import java.time.DayOfWeek
 import java.time.LocalDate
+import java.time.temporal.ChronoUnit
 
 class VisitDate(date: LocalDate) {
 
@@ -10,6 +11,8 @@ class VisitDate(date: LocalDate) {
     val isWeekday = dayOfWeekType == DayOfWeekType.Weekday
     val isWeekend = dayOfWeekType == DayOfWeekType.Weekend
     val isSpecial = date.dayOfMonth in listOf(3, 10, 17, 24, 25, 31)
+
+    val fromChristmasCount = ChronoUnit.DAYS.between(date, LocalDate.of(2023, 12, 25))
 
     companion object {
         private const val START_DATE = 1

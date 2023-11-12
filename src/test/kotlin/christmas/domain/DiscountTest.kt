@@ -18,7 +18,7 @@ class DiscountTest {
     fun `평일(일~목)에 메인 메뉴 1개를 주문했을 때, 할인 금액은 없다`() {
         val menu = Menu(menuInput = "${MainDish.BarbecueRibs.menuName}-1")
         val discount = WeekdayDiscount(visitDate = VisitDate.from("4"), menu = menu)
-        assertThat(discount.amount).isEqualTo(0)
+        assertThat(discount.amount).isZero()
     }
 
     @Test
@@ -32,7 +32,7 @@ class DiscountTest {
     fun `주말(금~토)에 메인 메뉴를 포함하지 않은 메뉴를 주문했을 때, 할인 금액은 없다`() {
         val menu = Menu(menuInput = "${Dessert.IceCream.menuName}-10")
         val discount = WeekendDiscount(visitDate = VisitDate.from("1"), menu = menu)
-        assertThat(discount.amount).isEqualTo(0)
+        assertThat(discount.amount).isZero()
     }
 
     @ParameterizedTest
@@ -40,6 +40,19 @@ class DiscountTest {
     fun `별이 있는 날에 방문하면 1000원을 할인해준다`(input: String) {
         val discount = SpecialDiscount(visitDate = VisitDate.from(input))
         assertThat(discount.amount).isEqualTo(1000)
+    }
+
+    @Test
+    fun `25일에 방문한다면, 크리스마스 할인 금액은 3400원이다`() {
+        val discount = ChristmasDiscount(visitDate = VisitDate.from("25"))
+        assertThat(discount.amount).isEqualTo(3400)
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["26", "27", "31"])
+    fun `크리스마스를 지나서 방문하면, 크리스마스 할인 금액은 없다`(input: String) {
+        val discount = ChristmasDiscount(visitDate = VisitDate.from(input))
+        assertThat(discount.amount).isZero
     }
 
     companion object {
