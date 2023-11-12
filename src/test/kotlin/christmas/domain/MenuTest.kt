@@ -1,5 +1,6 @@
 package christmas.domain
 
+import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
@@ -34,5 +35,11 @@ class MenuTest {
     @ValueSource(strings = ["", "안녕", "양송이수프-2,타파스", "타파스-1.양송이수프-1"])
     fun `입력 값이 메뉴의 주문 형식이 다른 경우, 오류를 반환한다`(input: String) {
         assertThatThrownBy { Menu(input) }.hasError(Error.InvalidMenu)
+    }
+
+    @Test
+    fun `티본 스테이크 1개, 아이스크림 2개를 주문했을 때 총 주문금액은 65,000원이다`() {
+        val menu = Menu("${MainDish.TBoneSteak.menuName}-1,${Dessert.IceCream.menuName}-2")
+        assertThat(menu.totalPrice).isEqualTo(MainDish.TBoneSteak.price + Dessert.IceCream.price * 2)
     }
 }

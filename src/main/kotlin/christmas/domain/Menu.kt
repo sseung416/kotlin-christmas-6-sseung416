@@ -7,6 +7,8 @@ class Menu(menuInput: String) {
     val dessertOrderCount get() = countByMenuItem.filterKeys { it in Dessert.entries }.values.sum()
     val mainDishOrderCount get() = countByMenuItem.filterKeys { it in MainDish.entries }.values.sum()
 
+    val totalPrice get() = countByMenuItem.entries.sumOf { (menuItem, count) -> menuItem.price * count }
+
     init {
         val pairs = menuInput.split(DELIMITER).map { menuNameAndCountinput ->
             runCatching {
