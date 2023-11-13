@@ -33,8 +33,8 @@ class SpecialDiscount(visitDate: VisitDate) : Discount {
 
 class ChristmasDiscount(visitDate: VisitDate) : Discount {
 
-    override val amount: Int = if (visitDate.fromChristmasCount >= 0) {
-        DiscountAmount.ChristmasDefault.price + DiscountAmount.ChristmasAddition.price * (24 - visitDate.fromChristmasCount.toInt())
+    override val amount: Int = if (visitDate.isBeforeChristmas) {
+        DiscountAmount.ChristmasDefault.price + DiscountAmount.ChristmasAddition.price * (VisitDate.CHRISTMAS_DAY - 1 - visitDate.fromChristmasCount)
     } else {
         0
     }
