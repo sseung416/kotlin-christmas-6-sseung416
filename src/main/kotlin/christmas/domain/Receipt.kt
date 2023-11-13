@@ -9,12 +9,16 @@ class Receipt(private val visitDate: VisitDate, private val menu: Menu) { // tod
     val totalPrice = menu.totalPrice
     val totalBenefit = amountByEvent.entries.sumOf { (_, amount) -> amount }
     val expectedPaymentAfterDiscount = menu.totalPrice - totalBenefit
+    val visitDay = visitDate.day
 
     fun getMenuNameAndCount(): Map<String, Int> = menu.countByMenuItem.mapKeys { (menuItem, _) -> menuItem.menuName }
 
     fun getGiftNameOr(default: String): String = gift?.menuName ?: default
 
     fun getEventBadgeNameOr(default: String): String = eventBadge?.value ?: default
+
+    fun getAmountByEvent(): Map<String, Int> =
+        amountByEvent.filterValues { amount -> amount > 0 }.mapKeys { (event, _) -> event.eventName }
 
     private fun getGiftPriceOr(default: Int = 0): Int = gift?.menuPrice ?: default
 

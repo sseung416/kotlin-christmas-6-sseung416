@@ -14,6 +14,8 @@ class VisitDate(date: LocalDate) {
 
     val fromChristmasCount = ChronoUnit.DAYS.between(date, LocalDate.of(2023, 12, 25))
 
+    val day = date.dayOfMonth
+
     companion object {
         private const val START_DATE = 1
         private const val END_DATE = 31
