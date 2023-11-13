@@ -1,6 +1,6 @@
 package christmas.domain
 
-enum class Gift(val menuName: String, val menuPrice: Int, val range: Iterable<Int>) {
+enum class Gift(val menuName: String, val menuPrice: Int, val range: IntRange) {
     Champagne(Drink.Champagne.menuName, Drink.Champagne.price, 120_000..Int.MAX_VALUE);
 
     companion object {
