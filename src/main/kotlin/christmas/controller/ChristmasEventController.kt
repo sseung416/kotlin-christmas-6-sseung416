@@ -28,7 +28,7 @@ class ChristmasEventController(
 
     private fun getMenu(): Menu =
         try {
-            Menu(inputView.readInputMenu())
+            Menu.of(inputView.readInputMenu())
         } catch (exception: IllegalArgumentException) {
             outputView.printError(exception.message)
             getMenu()
