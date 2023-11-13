@@ -1,6 +1,6 @@
 package christmas.domain
 
-import christmas.domain.event.EventBadge
+import christmas.domain.event.Badge
 import christmas.domain.user.VisitDate
 import christmas.domain.user.menu.Appetizer
 import christmas.domain.user.menu.Drink
@@ -12,11 +12,11 @@ import org.junit.jupiter.api.Test
 class ReceiptTest {
 
     @Test
-    fun getEventBadgeNameOrTest() {
+    fun getBadgeNameOrTest() {
         val menu = Menu.of("${MainDish.ChristmasPasta.menuName}-10")
         val visitDate = VisitDate.from("1")
         val receipt = Receipt(visitDate, menu)
-        assertThat(receipt.getEventBadgeNameOr("")).isEqualTo(EventBadge.Santa.value)
+        assertThat(receipt.getBadgeNameOr("")).isEqualTo(Badge.Santa.value)
     }
 
     @Test

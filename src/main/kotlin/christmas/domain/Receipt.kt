@@ -7,7 +7,7 @@ import christmas.domain.user.menu.Menu
 class Receipt(private val visitDate: VisitDate, private val menu: Menu) { // todo 이름변경
 
     private val gift = runCatching { Gift.from(menu.totalPrice) }.getOrNull()
-    private val eventBadge = runCatching { EventBadge.from(menu.totalPrice) }.getOrNull()
+    private val badge = runCatching { Badge.from(menu.totalPrice) }.getOrNull()
     private val amountByEvent = calculateEventAmount()
 
     val totalPrice = menu.totalPrice
@@ -19,7 +19,7 @@ class Receipt(private val visitDate: VisitDate, private val menu: Menu) { // tod
 
     fun getGiftNameOr(default: String): String = gift?.menuName ?: default
 
-    fun getEventBadgeNameOr(default: String): String = eventBadge?.value ?: default
+    fun getBadgeNameOr(default: String): String = badge?.value ?: default
 
     fun getAmountByEvent(): Map<String, Int> =
         amountByEvent.filterValues { amount -> amount > 0 }.mapKeys { (event, _) -> event.eventName }

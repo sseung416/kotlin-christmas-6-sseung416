@@ -18,7 +18,7 @@ class OutputView {
             append(getsDiscountDetailsMessage(receipt.getAmountByEvent()))
             append(getTotalBenefitMessage(receipt.totalBenefit))
             append(getExpectedPaymentAfterDiscountMessage(receipt.expectedPaymentAfterDiscount))
-            append(getEventBadgeMessage(receipt.getEventBadgeNameOr(NOTHING)))
+            append(getBadgeMessage(receipt.getBadgeNameOr(NOTHING)))
         }
         print(message)
     }
@@ -27,7 +27,7 @@ class OutputView {
         errorMessage?.let { println("$ERROR_TOKEN $it") }
     }
 
-    private fun getEventBadgeMessage(badgeName: String): String = buildString {
+    private fun getBadgeMessage(badgeName: String): String = buildString {
         appendDoubleLine(Header.DecemberEventBadge)
         append(badgeName)
     }
