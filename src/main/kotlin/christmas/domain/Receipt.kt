@@ -1,5 +1,7 @@
 package christmas.domain
 
+import christmas.domain.menu.Menu
+
 class Receipt(private val visitDate: VisitDate, private val menu: Menu) { // todo 이름변경
 
     private val gift = runCatching { Gift.from(menu.totalPrice) }.getOrNull()

@@ -1,5 +1,7 @@
 package christmas.domain
 
+import christmas.domain.menu.Menu
+
 interface Discount {
 
     val amount: Int

@@ -1,5 +1,7 @@
 package christmas.domain
 
+import christmas.domain.menu.Drink
+
 enum class Gift(val menuName: String, val menuPrice: Int, val range: IntRange) {
     Champagne(Drink.Champagne.menuName, Drink.Champagne.price, 120_000..Int.MAX_VALUE);
 

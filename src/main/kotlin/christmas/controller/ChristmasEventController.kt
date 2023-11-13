@@ -1,6 +1,6 @@
 package christmas.controller
 
-import christmas.domain.Menu
+import christmas.domain.menu.Menu
 import christmas.domain.Receipt
 import christmas.domain.VisitDate
 import christmas.view.InputView

@@ -1,4 +1,7 @@
-package christmas.domain
+package christmas.domain.menu
+
+import christmas.domain.Error
+import christmas.domain.toValidInt
 
 class Menu(menuInput: String) {
 

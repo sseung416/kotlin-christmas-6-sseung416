@@ -1,5 +1,8 @@
 package christmas.domain
 
+import christmas.domain.menu.Dessert
+import christmas.domain.menu.MainDish
+import christmas.domain.menu.Menu
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
