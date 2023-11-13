@@ -1,4 +1,4 @@
-package christmas.domain
+package christmas.domain.event
 
 enum class EventBadge(val value: String, val range: IntRange) {
     Star("별", 5000..<10000),

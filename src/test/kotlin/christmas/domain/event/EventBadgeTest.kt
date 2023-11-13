@@ -1,4 +1,4 @@
-package christmas.domain
+package christmas.domain.event
 
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy

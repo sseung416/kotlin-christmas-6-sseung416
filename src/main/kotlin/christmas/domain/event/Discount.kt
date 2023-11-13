@@ -1,5 +1,6 @@
-package christmas.domain
+package christmas.domain.event
 
+import christmas.domain.VisitDate
 import christmas.domain.menu.Menu
 
 interface Discount {

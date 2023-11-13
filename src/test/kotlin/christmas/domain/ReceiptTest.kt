@@ -1,5 +1,6 @@
 package christmas.domain
 
+import christmas.domain.event.EventBadge
 import christmas.domain.menu.Appetizer
 import christmas.domain.menu.Drink
 import christmas.domain.menu.MainDish
