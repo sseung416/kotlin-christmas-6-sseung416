@@ -1,7 +1,8 @@
-package christmas.domain.menu
+package christmas.domain.user.menu
 
 import christmas.domain.Error
 import christmas.domain.hasError
+import christmas.domain.user.menu.MenuItem
 import org.assertj.core.api.Assertions.assertThatNoException
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.params.ParameterizedTest

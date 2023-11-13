@@ -1,7 +1,8 @@
 package christmas.domain
 
 import christmas.domain.event.*
-import christmas.domain.menu.Menu
+import christmas.domain.user.VisitDate
+import christmas.domain.user.menu.Menu
 
 class Receipt(private val visitDate: VisitDate, private val menu: Menu) { // todo 이름변경
 

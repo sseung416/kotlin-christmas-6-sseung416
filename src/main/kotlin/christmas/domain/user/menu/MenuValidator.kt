@@ -1,7 +1,7 @@
-package christmas.domain.menu
+package christmas.domain.user.menu
 
 import christmas.domain.Error
-import christmas.domain.toValidInt
+import christmas.domain.user.toValidInt
 
 class MenuValidator {
 

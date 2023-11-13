@@ -1,7 +1,10 @@
-package christmas.domain.menu
+package christmas.domain.user.menu
 
 import christmas.domain.Error
 import christmas.domain.hasError
+import christmas.domain.user.menu.Dessert
+import christmas.domain.user.menu.MainDish
+import christmas.domain.user.menu.Menu
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test

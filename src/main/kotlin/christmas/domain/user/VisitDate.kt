@@ -1,5 +1,6 @@
-package christmas.domain
+package christmas.domain.user
 
+import christmas.domain.Error
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit

@@ -1,4 +1,4 @@
-package christmas.domain.menu
+package christmas.domain.user.menu
 
 
 class Menu private constructor(val countByMenuItem: Map<MenuItem, Int>) {

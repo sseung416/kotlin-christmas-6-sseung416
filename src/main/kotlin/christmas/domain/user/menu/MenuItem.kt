@@ -1,4 +1,4 @@
-package christmas.domain.menu
+package christmas.domain.user.menu
 
 import christmas.domain.Error
 

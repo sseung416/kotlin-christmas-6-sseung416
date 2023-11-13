@@ -1,6 +1,6 @@
 package christmas.domain.event
 
-import christmas.domain.menu.Drink
+import christmas.domain.user.menu.Drink
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test

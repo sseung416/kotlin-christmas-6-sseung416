@@ -1,7 +1,7 @@
 package christmas.domain.event
 
-import christmas.domain.VisitDate
-import christmas.domain.menu.Menu
+import christmas.domain.user.VisitDate
+import christmas.domain.user.menu.Menu
 
 interface Discount {
 
