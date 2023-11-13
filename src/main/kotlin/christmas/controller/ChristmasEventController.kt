@@ -16,6 +16,7 @@ class ChristmasEventController(
         val visitDate = getVisitDate()
         val menu = getMenu()
         outputView.printReceipt(Receipt(visitDate, menu))
+        inputView.terminate()
     }
 
     private fun getVisitDate(): VisitDate =
