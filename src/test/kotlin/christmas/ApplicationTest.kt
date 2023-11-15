@@ -32,6 +32,14 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `혜택 내역 없읍 출력2`() {
+        assertSimpleTest {
+            run("1", "타파스-1")
+            assertThat(output()).contains("<혜택 내역>$LINE_SEPARATOR".toString() + "없음")
+        }
+    }
+
+    @Test
     fun `날짜 예외 테스트`() {
         assertSimpleTest {
             runException("a")

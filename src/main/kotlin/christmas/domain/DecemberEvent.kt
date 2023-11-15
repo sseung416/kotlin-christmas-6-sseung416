@@ -28,11 +28,19 @@ class DecemberEvent(private val visitDate: VisitDate, private val menu: Menu) {
     private fun getGiftPriceOr(default: Money = Money.ZERO): Money = gift?.menuPrice ?: default
 
     private fun calculateEventAmount(): Map<String, Money> {
+        if (totalPrice.value < MIN_DISCOUNT_AMOUNT) {
+            return emptyMap()
+        }
+
         val discounts = getDiscounts(visitDate, menu)
         val giftPrice = getGiftPriceOr()
 
         return discounts.associate { discount ->
             discount.eventName to discount.amount
         } + mapOf(Gift.EVENT_NAME to giftPrice)
+    }
+
+    companion object {
+        private const val MIN_DISCOUNT_AMOUNT = 10_000
     }
 }
