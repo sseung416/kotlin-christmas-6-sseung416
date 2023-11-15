@@ -8,9 +8,9 @@ enum class Badge(val badgeName: String, val range: IntRange) {
     companion object {
         private const val ERROR_MESSAGE = "매칭되는게 없는데염"
 
-        fun from(money: Int): Badge = find(money) ?: throw IllegalArgumentException(ERROR_MESSAGE)
+        fun from(benefitAmount: Int): Badge = find(benefitAmount) ?: throw IllegalArgumentException(ERROR_MESSAGE)
 
-        fun find(money: Int): Badge? =
-            Badge.entries.findLast { money in it.range }
+        fun find(benefitAmount: Int): Badge? =
+            Badge.entries.findLast { benefitAmount in it.range }
     }
 }

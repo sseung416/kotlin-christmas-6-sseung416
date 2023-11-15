@@ -9,7 +9,7 @@ import christmas.domain.user.menu.Menu
 class DecemberEvent(private val visitDate: VisitDate, private val menu: Menu) {
 
     private val gift = Gift.find(menu.totalPrice)
-    private val badge = Badge.find(menu.totalPrice)
+    private val badge get() = Badge.find(totalBenefit)
     private val amountByEvent = calculateEventAmount()
 
     val totalPrice = menu.totalPrice
