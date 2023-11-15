@@ -25,7 +25,7 @@ class MenuTest {
     @Test
     fun `중복된 메뉴를 입력할 경우, 오류를 반환한다`() {
         // given
-        val menuInput = "양송이수프-1, 양송이수프-1"
+        val menuInput = "양송이수프-1,양송이수프-1"
 
         // when, then
         assertThatThrownBy { Menu.of(menuInput) }.hasError(Error.InvalidMenu)
