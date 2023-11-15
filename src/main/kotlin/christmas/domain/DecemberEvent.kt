@@ -12,7 +12,7 @@ class DecemberEvent(private val visitDate: VisitDate, private val menu: Menu) {
     private val badge get() = Badge.find(totalBenefit)
     private val amountByEvent = calculateEventAmount()
 
-    val totalPrice = menu.totalPrice
+    val totalPrice get() = menu.totalPrice
     val totalBenefit = amountByEvent.entries.sumOf { (_, amount) -> amount.value }.toMoney()
     val expectedPaymentAfterDiscount = menu.totalPrice - totalBenefit
     val visitDay = visitDate.day
