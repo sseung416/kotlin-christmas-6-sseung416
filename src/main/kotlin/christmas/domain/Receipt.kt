@@ -19,7 +19,7 @@ class Receipt(private val visitDate: VisitDate, private val menu: Menu) {
 
     fun getGiftNameOr(default: String): String = gift?.menuName ?: default
 
-    fun getBadgeNameOr(default: String): String = badge?.value ?: default
+    fun getBadgeNameOr(default: String): String = badge?.badgeName ?: default
 
     fun getAmountByEvent(): Map<String, Int> =
         amountByEvent.filterValues { amount -> amount > 0 }.mapKeys { (event, _) -> event.eventName }

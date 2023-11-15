@@ -16,7 +16,7 @@ class ReceiptTest {
         val menu = Menu.of("${MainDish.ChristmasPasta.menuName}-10")
         val visitDate = VisitDate.from("1")
         val receipt = Receipt(visitDate, menu)
-        assertThat(receipt.getBadgeNameOr("")).isEqualTo(Badge.Santa.value)
+        assertThat(receipt.getBadgeNameOr("")).isEqualTo(Badge.Santa.badgeName)
     }
 
     @Test
