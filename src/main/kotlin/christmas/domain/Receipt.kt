@@ -4,10 +4,10 @@ import christmas.domain.event.*
 import christmas.domain.user.VisitDate
 import christmas.domain.user.menu.Menu
 
-class Receipt(private val visitDate: VisitDate, private val menu: Menu) { // todo 이름변경
+class Receipt(private val visitDate: VisitDate, private val menu: Menu) {
 
-    private val gift = runCatching { Gift.from(menu.totalPrice) }.getOrNull()
-    private val badge = runCatching { Badge.from(menu.totalPrice) }.getOrNull()
+    private val gift = Gift.find(menu.totalPrice)
+    private val badge = Badge.find(menu.totalPrice)
     private val amountByEvent = calculateEventAmount()
 
     val totalPrice = menu.totalPrice

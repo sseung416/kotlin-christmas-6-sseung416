@@ -8,7 +8,8 @@ enum class Gift(val menuName: String, val menuPrice: Int, val range: IntRange) {
     companion object {
         private const val ERROR_MESSAGE = "일치하는 값이 없는데욤?"
 
-        fun from(money: Int): Gift =
-            Gift.entries.findLast { money in it.range } ?: throw IllegalArgumentException(ERROR_MESSAGE)
+        fun from(money: Int): Gift = find(money) ?: throw IllegalArgumentException(ERROR_MESSAGE)
+
+        fun find(money: Int): Gift? = Gift.entries.findLast { money in it.range }
     }
 }
