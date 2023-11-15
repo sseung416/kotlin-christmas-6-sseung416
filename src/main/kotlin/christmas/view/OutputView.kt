@@ -1,6 +1,6 @@
 package christmas.view
 
-import christmas.domain.Receipt
+import christmas.domain.DecemberEvent
 
 class OutputView {
 
@@ -8,17 +8,17 @@ class OutputView {
         println(INTRODUCE_MESSAGE)
     }
 
-    fun printReceipt(receipt: Receipt) {
+    fun printDecemberEvent(decemberEvent: DecemberEvent) {
         val message = buildString {
-            appendLine(PREVIEW_EVENT_MESSAGE_TEMPLATE.format(receipt.visitDay))
+            appendLine(PREVIEW_EVENT_MESSAGE_TEMPLATE.format(decemberEvent.visitDay))
 
-            append(getOrderMenuMessage(receipt.getMenuNameAndCount()))
-            append(getTotalOrderAmountMessage(receipt.totalPrice))
-            append(getGiftMessage(receipt.getGiftNameOr(NOTHING)))
-            append(getsDiscountDetailsMessage(receipt.getAmountByEvent()))
-            append(getTotalBenefitMessage(receipt.totalBenefit))
-            append(getExpectedPaymentAfterDiscountMessage(receipt.expectedPaymentAfterDiscount))
-            append(getBadgeMessage(receipt.getBadgeNameOr(NOTHING)))
+            append(getOrderMenuMessage(decemberEvent.getMenuNameAndCount()))
+            append(getTotalOrderAmountMessage(decemberEvent.totalPrice))
+            append(getGiftMessage(decemberEvent.getGiftNameOr(NOTHING)))
+            append(getsDiscountDetailsMessage(decemberEvent.getAmountByEvent()))
+            append(getTotalBenefitMessage(decemberEvent.totalBenefit))
+            append(getExpectedPaymentAfterDiscountMessage(decemberEvent.expectedPaymentAfterDiscount))
+            append(getBadgeMessage(decemberEvent.getBadgeNameOr(NOTHING)))
         }
         print(message)
     }

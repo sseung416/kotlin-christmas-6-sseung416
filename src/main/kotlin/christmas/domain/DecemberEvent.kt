@@ -4,7 +4,7 @@ import christmas.domain.event.*
 import christmas.domain.user.VisitDate
 import christmas.domain.user.menu.Menu
 
-class Receipt(private val visitDate: VisitDate, private val menu: Menu) {
+class DecemberEvent(private val visitDate: VisitDate, private val menu: Menu) {
 
     private val gift = Gift.find(menu.totalPrice)
     private val badge = Badge.find(menu.totalPrice)

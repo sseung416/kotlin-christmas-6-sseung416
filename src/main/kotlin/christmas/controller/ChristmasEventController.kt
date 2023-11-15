@@ -1,7 +1,7 @@
 package christmas.controller
 
 import christmas.domain.user.menu.Menu
-import christmas.domain.Receipt
+import christmas.domain.DecemberEvent
 import christmas.domain.user.VisitDate
 import christmas.view.InputView
 import christmas.view.OutputView
@@ -15,7 +15,7 @@ class ChristmasEventController(
         outputView.printIntroduce()
         val visitDate = getVisitDate()
         val menu = getMenu()
-        outputView.printReceipt(Receipt(visitDate, menu))
+        outputView.printDecemberEvent(DecemberEvent(visitDate, menu))
         inputView.terminate()
     }
 
