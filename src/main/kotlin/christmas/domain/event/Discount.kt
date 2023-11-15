@@ -17,38 +17,45 @@ fun getDiscounts(visitDate: VisitDate, menu: Menu): List<Discount> =
         ChristmasDiscount(visitDate)
     )
 
-private enum class DiscountAmount(val price: Int) {
-    Weekday(2_023),
-    Weekend(2_023),
-    Special(1_000),
-    ChristmasDefault(1_000),
-    ChristmasAddition(100)
+private enum class DiscountType(val eventName: String, val price: Int, val additionalPrice: Int = 0) {
+    Weekday("평일 할인", 2_023),
+    Weekend("주말 할인", 2_023),
+    Special("특별 할인", 1_000),
+    Christmas("크리스마스 디데이 할인", 1_000, 100),
 }
 
 internal class WeekdayDiscount(visitDate: VisitDate, menu: Menu) : Discount {
 
-    override val amount: Int = if (visitDate.isWeekday) DiscountAmount.Weekday.price * menu.dessertOrderCount else 0
-    override val eventName: String = "평일 할인"
+    private val discountType = DiscountType.Weekday
+
+    override val amount: Int = if (visitDate.isWeekday) discountType.price * menu.dessertOrderCount else 0
+    override val eventName: String = discountType.eventName
 }
 
 internal class WeekendDiscount(visitDate: VisitDate, menu: Menu) : Discount {
 
-    override val amount: Int = if (visitDate.isWeekend) DiscountAmount.Weekend.price * menu.mainDishOrderCount else 0
-    override val eventName: String = "주말 할인"
+    private val discountType = DiscountType.Weekend
+
+    override val amount: Int = if (visitDate.isWeekend) discountType.price * menu.mainDishOrderCount else 0
+    override val eventName: String = discountType.eventName
 }
 
 internal class SpecialDiscount(visitDate: VisitDate) : Discount {
 
-    override val amount: Int = if (visitDate.isSpecial) DiscountAmount.Special.price else 0
-    override val eventName: String = "특별 할인"
+    private val discountType = DiscountType.Special
+
+    override val amount: Int = if (visitDate.isSpecial) discountType.price else 0
+    override val eventName: String = discountType.eventName
 }
 
 internal class ChristmasDiscount(visitDate: VisitDate) : Discount {
 
+    private val discountType = DiscountType.Christmas
+
     override val amount: Int = if (visitDate.isBeforeChristmas) {
-        DiscountAmount.ChristmasDefault.price + DiscountAmount.ChristmasAddition.price * (visitDate.day - 1)
+        discountType.price + discountType.additionalPrice * (visitDate.day - 1)
     } else {
         0
     }
-    override val eventName: String = "크리스마스 디데이 할인"
+    override val eventName: String = discountType.eventName
 }
