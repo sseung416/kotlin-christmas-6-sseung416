@@ -7,6 +7,7 @@ enum class Gift(val menuName: String, val menuPrice: Int, val range: IntRange) {
 
     companion object {
         private const val ERROR_MESSAGE = "일치하는 값이 없는데욤?"
+        const val EVENT_NAME = "증정 이벤트"
 
         fun from(money: Int): Gift = find(money) ?: throw IllegalArgumentException(ERROR_MESSAGE)
 
