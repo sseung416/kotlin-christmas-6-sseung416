@@ -9,19 +9,20 @@ class VisitDate(date: LocalDate) {
 
     private val dayOfWeekType = DayOfWeekType.from(dayOfWeek = date.dayOfWeek)
 
-    val fromChristmasCount = ChronoUnit.DAYS.between(date, LocalDate.of(2023, 12, 25)).toInt()
+    private val fromChristmasCount = ChronoUnit.DAYS.between(date, CHRISTMAS_DATE).toInt()
 
     val isWeekday = dayOfWeekType == DayOfWeekType.Weekday
     val isWeekend = dayOfWeekType == DayOfWeekType.Weekend
-    val isSpecial = date.dayOfMonth in listOf(3, 10, 17, 24, 25, 31)
+    val isSpecial = date.dayOfMonth in SPECIAL_DAYS
     val isBeforeChristmas = fromChristmasCount >= 0
 
     val day = date.dayOfMonth
 
     companion object {
-        const val CHRISTMAS_DAY = 25
         private const val START_DATE = 1
         private const val END_DATE = 31
+        private val SPECIAL_DAYS = listOf(3, 10, 17, 24, 25, 31)
+        private val CHRISTMAS_DATE = LocalDate.of(2023, 12, 25)
 
         fun from(input: String): VisitDate {
             validateNumber(input)
