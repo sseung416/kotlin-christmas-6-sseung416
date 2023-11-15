@@ -31,13 +31,8 @@ class DecemberEvent(private val visitDate: VisitDate, private val menu: Menu) {
         val discounts = getDiscounts(visitDate, menu)
         val giftPrice = getGiftPriceOr()
 
-        val mutableMap = mutableMapOf<String, Int>()
-        val discountMap = discounts.associate { discount ->
+        return discounts.associate { discount ->
             discount.eventName to discount.amount
-        }
-        mutableMap.putAll(discountMap)
-        mutableMap[Gift.EVENT_NAME] = giftPrice
-
-        return mutableMap
+        } + mapOf(Gift.EVENT_NAME to giftPrice)
     }
 }
