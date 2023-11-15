@@ -23,7 +23,7 @@ class DiscountTest {
         val discount = WeekdayDiscount(visitDate = weekday, menu = menu)
 
         // when, then
-        assertThat(discount.amount).isEqualTo(DAY_DISCOUNT_AMOUNT * dessertMenuItemCount)
+        assertThat(discount.amount.value).isEqualTo(DAY_DISCOUNT_AMOUNT * dessertMenuItemCount)
     }
 
     @Test
@@ -33,7 +33,7 @@ class DiscountTest {
         val discount = WeekdayDiscount(visitDate = weekday, menu = menu)
 
         // when, then
-        assertThat(discount.amount).isZero()
+        assertThat(discount.amount.value).isZero()
     }
 
     @Test
@@ -43,7 +43,7 @@ class DiscountTest {
         val discount = WeekendDiscount(visitDate = weekend, menu = menu)
 
         // when, then
-        assertThat(discount.amount).isEqualTo(DAY_DISCOUNT_AMOUNT * 3)
+        assertThat(discount.amount.value).isEqualTo(DAY_DISCOUNT_AMOUNT * 3)
     }
 
     @Test
@@ -53,7 +53,7 @@ class DiscountTest {
         val discount = WeekendDiscount(visitDate = VisitDate.from("1"), menu = menu)
 
         // when, then
-        assertThat(discount.amount).isZero()
+        assertThat(discount.amount.value).isZero()
     }
 
     @ParameterizedTest
@@ -64,7 +64,7 @@ class DiscountTest {
         val discount = SpecialDiscount(visitDate = specialDay)
 
         // when, then
-        assertThat(discount.amount).isEqualTo(SPECIAL_DISCOUNT_AMOUNT)
+        assertThat(discount.amount.value).isEqualTo(SPECIAL_DISCOUNT_AMOUNT)
     }
 
     @Test
@@ -73,7 +73,7 @@ class DiscountTest {
         val discount = ChristmasDiscount(visitDate = christmas)
 
         // when, then
-        assertThat(discount.amount).isEqualTo(3400)
+        assertThat(discount.amount.value).isEqualTo(3400)
     }
 
     @ParameterizedTest
@@ -83,7 +83,7 @@ class DiscountTest {
         val discount = ChristmasDiscount(visitDate = VisitDate.from(input))
 
         // when, then
-        assertThat(discount.amount).isZero()
+        assertThat(discount.amount.value).isZero()
     }
 
     companion object {

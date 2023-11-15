@@ -1,6 +1,7 @@
 package christmas.view
 
 import christmas.domain.DecemberEvent
+import christmas.domain.Money
 
 class OutputView {
 
@@ -32,12 +33,12 @@ class OutputView {
         append(badgeName)
     }
 
-    private fun getExpectedPaymentAfterDiscountMessage(money: Int): String = buildString {
+    private fun getExpectedPaymentAfterDiscountMessage(money: Money): String = buildString {
         appendDoubleLine(Header.ExpectedPaymentAfterDiscount)
         appendLine("${formatMoney(money)}원")
     }
 
-    private fun getsDiscountDetailsMessage(amountByEvent: Map<String, Int>): String = buildString {
+    private fun getsDiscountDetailsMessage(amountByEvent: Map<String, Money>): String = buildString {
         appendDoubleLine(Header.DiscountDetails)
 
         if (amountByEvent.isEmpty()) {
@@ -50,10 +51,10 @@ class OutputView {
         }
     }
 
-    private fun getTotalBenefitMessage(totalBenefit: Int): String = buildString {
+    private fun getTotalBenefitMessage(totalBenefit: Money): String = buildString {
         appendDoubleLine(Header.TotalBenefit)
 
-        if (totalBenefit != 0) append("-")
+        if (totalBenefit != Money.ZERO) append("-")
         appendLine("${formatMoney(totalBenefit)}원")
     }
 
@@ -65,7 +66,7 @@ class OutputView {
         }
     }
 
-    private fun getTotalOrderAmountMessage(money: Int): String = buildString {
+    private fun getTotalOrderAmountMessage(money: Money): String = buildString {
         appendDoubleLine(Header.TotalOrderAmount)
         appendLine("${formatMoney(money)}원")
     }
@@ -77,7 +78,7 @@ class OutputView {
         appendLine(count)
     }
 
-    private fun formatMoney(money: Int): String = "%,d".format(money)
+    private fun formatMoney(money: Money): String = "%,d".format(money.value)
 
     companion object {
         private const val INTRODUCE_MESSAGE = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다."

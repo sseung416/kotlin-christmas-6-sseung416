@@ -13,7 +13,7 @@ class DecemberEvent(private val visitDate: VisitDate, private val menu: Menu) {
     private val amountByEvent = calculateEventAmount()
 
     val totalPrice = menu.totalPrice
-    val totalBenefit = amountByEvent.entries.sumOf { (_, amount) -> amount }
+    val totalBenefit = amountByEvent.entries.sumOf { (_, amount) -> amount.value }.toMoney()
     val expectedPaymentAfterDiscount = menu.totalPrice - totalBenefit
     val visitDay = visitDate.day
 
@@ -23,11 +23,11 @@ class DecemberEvent(private val visitDate: VisitDate, private val menu: Menu) {
 
     fun getBadgeNameOr(default: String): String = badge?.badgeName ?: default
 
-    fun getAmountByEvent(): Map<String, Int> = amountByEvent.filterValues { amount -> amount > 0 }
+    fun getAmountByEvent(): Map<String, Money> = amountByEvent.filterValues { amount -> amount.value > 0 }
 
-    private fun getGiftPriceOr(default: Int = 0): Int = gift?.menuPrice ?: default
+    private fun getGiftPriceOr(default: Money = Money.ZERO): Money = gift?.menuPrice ?: default
 
-    private fun calculateEventAmount(): Map<String, Int> {
+    private fun calculateEventAmount(): Map<String, Money> {
         val discounts = getDiscounts(visitDate, menu)
         val giftPrice = getGiftPriceOr()
 
