@@ -24,7 +24,11 @@ class MenuTest {
 
     @Test
     fun `중복된 메뉴를 입력할 경우, 오류를 반환한다`() {
-        assertThatThrownBy { Menu.of("양송이수프-1, 양송이수프-1") }.hasError(Error.InvalidMenu)
+        // given
+        val menuInput = "양송이수프-1, 양송이수프-1"
+
+        // when, then
+        assertThatThrownBy { Menu.of(menuInput) }.hasError(Error.InvalidMenu)
     }
 
     @ParameterizedTest
@@ -41,7 +45,14 @@ class MenuTest {
 
     @Test
     fun `티본 스테이크 1개, 아이스크림 2개를 주문했을 때 총 주문금액은 65,000원이다`() {
-        val menu = Menu.of("${MainDish.TBoneSteak.menuName}-1,${Dessert.IceCream.menuName}-2")
-        assertThat(menu.totalPrice).isEqualTo(MainDish.TBoneSteak.price + Dessert.IceCream.price * 2)
+        // given
+        val steakCount = 1
+        val iceCreamCount = 2
+        val menuInput = "${MainDish.TBoneSteak.menuName}-$steakCount,${Dessert.IceCream.menuName}-$iceCreamCount"
+        val menu = Menu.of(menuInput)
+
+        // when, then
+        val expectedPrice = MainDish.TBoneSteak.price * steakCount + Dessert.IceCream.price * iceCreamCount
+        assertThat(menu.totalPrice).isEqualTo(expectedPrice)
     }
 }

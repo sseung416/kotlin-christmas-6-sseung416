@@ -11,8 +11,13 @@ class GiftTest {
 
     @Test
     fun `12만 원 이상 주문했을 때, 샴페인을 증정한다`() {
+        // give
         val money = 120_000
+
+        // when
         val gift = Gift.from(money)
+
+        // then
         assertThat(gift.menuName).isEqualTo(Drink.Champagne.menuName)
     }
 
