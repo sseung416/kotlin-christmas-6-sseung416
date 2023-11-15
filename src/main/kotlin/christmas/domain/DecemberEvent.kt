@@ -14,7 +14,7 @@ class DecemberEvent(private val visitDate: VisitDate, private val menu: Menu) {
 
     val totalPrice get() = menu.totalPrice
     val totalBenefit = amountByEvent.entries.sumOf { (_, amount) -> amount.value }.toMoney()
-    val expectedPaymentAfterDiscount = menu.totalPrice - totalBenefit
+    val expectedPaymentAfterDiscount = menu.totalPrice - totalBenefit + (gift?.menuPrice ?: Money.ZERO)
     val visitDay = visitDate.day
 
     fun getMenuNameAndCount(): Map<String, Int> = menu.countByMenuItem.mapKeys { (menuItem, _) -> menuItem.menuName }
